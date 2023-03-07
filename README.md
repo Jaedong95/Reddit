@@ -12,6 +12,6 @@ zstd   - pip install zstandard
 |   |   |--- ...
 |   |   |--- RC_201-12.zst 
 |   |---
-
+```
 ### 1. How to work 
 #### 1) Extract data 
