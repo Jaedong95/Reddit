@@ -17,7 +17,6 @@ zstd   - pip install zstandard
 |   |   |--- RC_2010-01.zst 
 |   |   |--- ...
 |   |   |--- RC_2010-12.zst
-
 |   |---origin
 |   |   |--- rs_2010.csv 
 |   |   |--- rc_2010.csv 
