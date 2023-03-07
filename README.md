@@ -39,3 +39,15 @@ The extracted data is stored in the origin folder.
 ```bash
 $ python data-extract.py --data_path {$DATA_PATH} --subreddit {$SUBREDDIT_NAME} --year {$YEAR} 
 ```
+
+#### 2) Process data 
+- delete cross post, post that contains url, mention(@), tags(#) and NULL post 
+- cleanse data 
+- split data (sep: '.') 
+- delete comments that do not have parent post 
+
+Processed data is stored in the processed folder. (dataset1: document, dataset2: single sentence) 
+
+```bash 
+$ python data-process.py
+```
