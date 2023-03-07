@@ -2,9 +2,12 @@
 Reddit data crawling &amp; archieve data processing
 
 ### 0. Requirements 
+#### 1) packages 
 ```python
 zstd   - pip install zstandard 
 ```
+
+#### 2) data directory
 ```bash 
 |---data 
 |   |---2010
@@ -13,5 +16,6 @@ zstd   - pip install zstandard
 |   |   |--- RC_201-12.zst 
 |   |---
 ```
+
 ### 1. How to work 
 #### 1) Extract data 
