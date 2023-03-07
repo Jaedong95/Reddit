@@ -1,5 +1,9 @@
 # Reddit
-Reddit data crawling &amp; archieve data processing
+reddit archiev data curating 
+
+1) reddit submissions:  https://files.pushshift.io/reddit/submissions/
+2) reddit comment: http://files.pushshift.io/reddit/comments/
+
 
 ### 0. Requirements 
 #### 1) packages 
