@@ -5,3 +5,6 @@ Reddit data crawling &amp; archieve data processing
 ```python
 zstd   - pip install zstandard 
 ```
+
+### 1. How to work 
+#### 1) Extract data 
