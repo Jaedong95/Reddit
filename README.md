@@ -12,9 +12,22 @@ zstd   - pip install zstandard
 |---data 
 |   |---2010
 |   |   |--- RS_2010-01.zst 
+|   |   |--- ... 
+|   |   |--- RS_2010-12.zst 
+|   |   |--- RC_2010-01.zst 
 |   |   |--- ...
-|   |   |--- RC_201-12.zst 
-|   |---
+|   |   |--- RC_2010-12.zst 
+|   |--- ... 
+|   |---2018
+|   |---origin
+|   |   |--- rs_2010.csv 
+|   |   |--- rc_2010.csv 
+|   |   |--- ... 
+|   |   |--- rs_2018.csv 
+|   |   |--- rc_2018.csv 
+|   |---processed
+|   |   |--- dataset1.csv 
+|   |   |--- dataset2.csv 
 ```
 
 ### 1. How to work 
