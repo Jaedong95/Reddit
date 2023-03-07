@@ -26,5 +26,12 @@ zstd   - pip install zstandard
 |   |   |--- dataset2.csv 
 ```
 
+
 ### 1. How to work 
 #### 1) Extract data 
+We extract data corresponding to the specified subreddit and year from the zst file.
+The extracted data is stored in the origin folder.
+
+```bash
+$ python data-extract.py --data_path {$DATA_PATH} --subreddit {$SUBREDDIT_NAME} --year {$YEAR} 
+```
