@@ -33,7 +33,7 @@ zstd   - pip install zstandard
 
 ### 1. How to use 
 #### 1) Extract data 
-We extract data corresponding to the specified subreddit and year from the zst file.
+We extract data corresponding to the specified subreddit and year from the zst file.   
 The extracted data is stored in the origin folder.
 
 ```bash
