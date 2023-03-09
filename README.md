@@ -35,11 +35,11 @@ nltk   - pip install nltk
 ### 1. How to use 
 ##### 1) Extract data 
 ###### We extract data corresponding to the specified subreddit and year from the zst file.   
-###### The extracted data is stored in the origin folder.
 
 ```bash
 $ python data-extract.py --data_path {$DATA_PATH} --subreddit {$SUBREDDIT_NAME} --year {$YEAR} 
 ```
+##### The extracted data is stored in the origin folder.
 
 ##### 2) Process data 
 ###### we pre-process reddit data to create dataset1.csv as follows
