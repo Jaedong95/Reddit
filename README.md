@@ -29,10 +29,24 @@ nltk   - pip install nltk
 |   |---processed
 |   |   |--- dataset1.csv 
 |   |   |--- dataset2.csv 
+|   |   |--- dataset3.csv
 ```
+***
+### 1. Data Explanation  
+1) rs*.csv, rc*.csv (origin folder) 
+###### extracted data from RS*.zst, RC*.zst  
+
+2) dataset1.csv 
+###### it's text is consist of multi sentence  (column: id, subreddit, text, type: title, post, comment) 
+
+3) dataset2.csv 
+###### it's text is consist of single sentence  (column: id, subreddit, text, type: title, post, comment) 
+
+4) dataset3.csv 
+###### we remove personal info from dataset2.csv using bert ner tagger 
 
 ***
-### 1. How to use 
+### 2. How to use 
 ##### 1) Extract data 
 ###### We extract data corresponding to the specified subreddit and year from the zst file.   
 
