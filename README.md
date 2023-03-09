@@ -48,7 +48,7 @@ $ python data_extract.py --data_path {$DATA_PATH} --subreddit {$SUBREDDIT_NAME} 
 $ python create_dataset1.py --data_path {$DATA_PATH} --subreddit {$SUBREDDIT_NAME} --year {$YEAR} 
 ```
 
-###### we pre-process reddit data to create dataset2.csv as follows 
+###### we pre-process datset1.csv to create dataset2.csv as follows 
 
 ```bash
 $ python create_dataset2.py --data_path {$DATA_PATH} --subreddit {$SUBREDDIT_NAME} --year {$YEAR} 
