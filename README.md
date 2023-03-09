@@ -9,6 +9,7 @@
 ##### 1) packages 
 ```python
 zstd   - pip install zstandard 
+nltk   - pip install nltk
 ```
 
 ##### 2) data directory
@@ -34,24 +35,23 @@ zstd   - pip install zstandard
 ### 1. How to use 
 ##### 1) Extract data 
 ###### We extract data corresponding to the specified subreddit and year from the zst file.   
-###### The extracted data is stored in the origin folder.
 
 ```bash
-$ python data-extract.py --data_path {$DATA_PATH} --subreddit {$SUBREDDIT_NAME} --year {$YEAR} 
+$ python data_extract.py --data_path {$DATA_PATH} --subreddit {$SUBREDDIT_NAME} --year {$YEAR} 
 ```
+##### The extracted data is stored in the origin folder.
 
 ##### 2) Process data 
-- drop (na, cross post, deleted data)
-- delete rc that does not have parent rs post (rs: id, rc: link_id  - 't3_' + id)
-- cleanse text    
-- drop duplicates  -> dataset1.csv 
-- split data (sep: '.') 
-- set max tokens (max tok: 32) 
-- cleanse text  (delete str len < 6) 
-- drop na 
+###### we pre-process reddit data to create dataset1.csv as follows
 
-###### Processed data is stored in the processed folder. (dataset1: document, dataset2: single sentence) 
-
-```bash 
-$ python data-process.py
+```bash
+$ python create_dataset1.py --data_path {$DATA_PATH} --subreddit {$SUBREDDIT_NAME} --year {$YEAR} 
 ```
+
+###### we pre-process datset1.csv to create dataset2.csv as follows 
+
+```bash
+$ python create_dataset2.py --data_path {$DATA_PATH} --subreddit {$SUBREDDIT_NAME} --year {$YEAR} 
+```
+
+##### Processed data is stored in the processed folder. (dataset1: document, dataset2: single sentence)
