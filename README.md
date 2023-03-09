@@ -43,10 +43,16 @@ $ python data-extract.py --data_path {$DATA_PATH} --subreddit {$SUBREDDIT_NAME} 
 
 ##### 2) Process data 
 ###### we pre-process reddit data to create dataset1.csv as follows
+###### Processed data is stored in the processed folder. (dataset1: document, dataset2: single sentence) 
+
 - drop (na, cross post, deleted data)
 - delete rc that does not have parent rs post (rs: id, rc: link_id  - 't3_' + id)
 - cleanse text    
 - drop duplicates  -> dataset1.csv 
+
+```bash
+$ python create_dataset1.py --data_path {$DATA_PATH} --subreddit {$SUBREDDIT_NAME} --year {$YEAR} 
+```
 
 ###### we pre-process reddit data to create dataset2.csv as follows 
 - split data (sep: '.') 
@@ -54,7 +60,11 @@ $ python data-extract.py --data_path {$DATA_PATH} --subreddit {$SUBREDDIT_NAME} 
 - cleanse text  (delete str len < 6) 
 - drop na 
 
-###### Processed data is stored in the processed folder. (dataset1: document, dataset2: single sentence) 
+```bash
+$ python create_dataset2.py --data_path {$DATA_PATH} --subreddit {$SUBREDDIT_NAME} --year {$YEAR} 
+```
+
+
 
 ```bash 
 $ python data-process.py
