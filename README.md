@@ -33,16 +33,16 @@ nltk   - pip install nltk
 ```
 ***
 ### 1. Data Explanation  
-1) rs*.csv, rc*.csv (origin folder) 
+##### 1) rs*.csv, rc*.csv (origin folder) 
 ###### extracted data from RS*.zst, RC*.zst  
 
-2) dataset1.csv 
+##### 2) dataset1.csv 
 ###### it's text is consist of multi sentence  (column: id, subreddit, text, type: title, post, comment) 
 
-3) dataset2.csv 
+##### 3) dataset2.csv 
 ###### it's text is consist of single sentence  (column: id, subreddit, text, type: title, post, comment) 
 
-4) dataset3.csv 
+##### 4) dataset3.csv 
 ###### we remove personal info from dataset2.csv using bert ner tagger 
 
 ***
