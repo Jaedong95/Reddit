@@ -64,8 +64,4 @@ $ python create_dataset1.py --data_path {$DATA_PATH} --subreddit {$SUBREDDIT_NAM
 $ python create_dataset2.py --data_path {$DATA_PATH} --subreddit {$SUBREDDIT_NAME} --year {$YEAR} 
 ```
 
-
-
-```bash 
-$ python data-process.py
-```
+##### Processed data is stored in the processed folder. (dataset1: document, dataset2: single sentence)
