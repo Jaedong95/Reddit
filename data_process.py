@@ -23,22 +23,14 @@ def main(args):
     rc_col = ['link_id', 'subreddit', 'body']
     rc_df = rc_df[rc_col]
 
-    '''
-    Data process
-    1. drop na, cross post, deleted data  
-    2. map rs, rc file (use id, link_id)
-    3. clean text   -> dataset1.csv 
-    4. sentence split 
-    5. set max tokens 
-    6. clean text 
-    7. drop na 
-    '''
+    ''' data pre-process ''' 
+    print(f'data length before pre-process.. rs: {len(rs_df)}, rc: {len(rc_df)}')
+    
     # drop na 
     rs_df = reddit_p.drop_na(rs_df)
     rc_df = reddit_p.drop_na(rc_df)
     
     # drop cross post, deleted data 
-    print(len(rs_df), len(rc_df))
     rs_df = reddit_p.drop_odd('selftext', rs_df)
     rs_df = reddit_p.drop_odd('title', rs_df)
     rc_df = reddit_p.drop_odd('body', rc_df) 
@@ -53,13 +45,29 @@ def main(args):
     rs_df = reddit_p.drop_duplicates('selftext', rs_df)
     rs_df = reddit_p.drop_duplicates('title', rs_df)
     rc_df = reddit_p.drop_duplicates('body', rc_df)
+    print(f'data length after pre-process.. rs: {len(rs_df)}, rc: {len(rc_df)}')
 
-    print(len(rs_df), len(rc_df))
-    reddit.save_df(rs_df, os.path.join(save_dir, 'dataset1_' + args.year + '_rs.csv'))
-    reddit.save_df(rc_df, os.path.join(save_dir, 'dataset1_' + args.year + '_rc.csv'))
-
+    ''' save dataset1.csv '''
+    rs_title = rs_df.copy()
+    rs_title = rs_title[['id', 'subreddit', 'title']]
+    rs_title.columns = ['id', 'subreddit', 'text']
+    rs_title['type'] = 'title'
     
+    rs_selftext = rs_df.copy()
+    rs_selftext = rs_selftext[['id', 'subreddit', 'selftext']]
+    rs_selftext.columns = ['id', 'subreddit', 'text'] 
+    rs_selftext['type'] = 'post'
+    
+    rc_body = rc_df.copy() 
+    rc_body.columns = ['id', 'subreddit', 'body']
+    rc_body.columns = ['id', 'subreddit', 'text']
+    rc_body['type'] = 'comment'
 
+    reddit_df = pd.concat([rs_selftext, rs_title, rc_body]) 
+    reddit.save_df(reddit_df, os.path.join(save_dir, 'dataset1_' + args.year + '.csv'))
+
+    ''' data pre-process2  - to create dataset2.csv ''' 
+    # split sentence 
 
 if __name__ == '__main__':
     cli_parser = argparse.ArgumentParser()
