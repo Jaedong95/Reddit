@@ -41,10 +41,14 @@ $ python data-extract.py --data_path {$DATA_PATH} --subreddit {$SUBREDDIT_NAME} 
 ```
 
 ##### 2) Process data 
-- delete cross post, post that contains url, mention(@), tags(#) and NULL post 
-- cleanse data 
+- drop (na, cross post, deleted data)
+- delete rc that does not have parent rs post (rs: id, rc: link_id  - 't3_' + id)
+- cleanse text    
+- drop duplicates  -> dataset1.csv 
 - split data (sep: '.') 
-- delete comments that do not have parent post 
+- set max tokens (max tok: 32) 
+- cleanse text  (delete str len < 6) 
+- drop na 
 
 ###### Processed data is stored in the processed folder. (dataset1: document, dataset2: single sentence) 
 
