@@ -42,15 +42,17 @@ $ python data-extract.py --data_path {$DATA_PATH} --subreddit {$SUBREDDIT_NAME} 
 ```
 
 ##### 2) Process data 
-###### we pre-process reddit data as follows
-- ###### drop (na, cross post, deleted data)
-- ###### delete rc that does not have parent rs post (rs: id, rc: link_id  - 't3_' + id)
-- cleanse text    
-- drop duplicates  -> dataset1.csv 
-- split data (sep: '.') 
-- set max tokens (max tok: 32) 
-- cleanse text  (delete str len < 6) 
-- drop na 
+###### we pre-process reddit data to create dataset1.csv as follows
+###### 1. drop (na, cross post, deleted data)
+###### 2. delete rc that does not have parent rs post (rs: id, rc: link_id  - 't3_' + id)
+###### 3. cleanse text    
+###### 4. drop duplicates  -> dataset1.csv 
+
+###### we pre-process reddit data to create dataset2.csv as follows 
+###### 1. split data (sep: '.') 
+###### 2. set max tokens (max tok: 32) 
+###### 3. cleanse text  (delete str len < 6) 
+###### 4. drop na 
 
 ###### Processed data is stored in the processed folder. (dataset1: document, dataset2: single sentence) 
 
