@@ -9,6 +9,7 @@
 ##### 1) packages 
 ```python
 zstd   - pip install zstandard 
+nltk   - pip install nltk
 ```
 
 ##### 2) data directory
@@ -41,8 +42,9 @@ $ python data-extract.py --data_path {$DATA_PATH} --subreddit {$SUBREDDIT_NAME} 
 ```
 
 ##### 2) Process data 
-- drop (na, cross post, deleted data)
-- delete rc that does not have parent rs post (rs: id, rc: link_id  - 't3_' + id)
+###### we pre-process reddit data as follows
+- ###### drop (na, cross post, deleted data)
+- ###### delete rc that does not have parent rs post (rs: id, rc: link_id  - 't3_' + id)
 - cleanse text    
 - drop duplicates  -> dataset1.csv 
 - split data (sep: '.') 
