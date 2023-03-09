@@ -1,8 +1,8 @@
 # Reddit
 ##### reddit archive data curating 
 
-##### 1) reddit submissions:  https://files.pushshift.io/reddit/submissions/
-##### 2) reddit comment: http://files.pushshift.io/reddit/comments/
+###### 1) reddit submissions:  https://files.pushshift.io/reddit/submissions/
+###### 2) reddit comment: http://files.pushshift.io/reddit/comments/
 
 ***
 ### 0. Requirements 
