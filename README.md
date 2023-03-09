@@ -37,7 +37,7 @@ nltk   - pip install nltk
 ###### We extract data corresponding to the specified subreddit and year from the zst file.   
 
 ```bash
-$ python data-extract.py --data_path {$DATA_PATH} --subreddit {$SUBREDDIT_NAME} --year {$YEAR} 
+$ python data_extract.py --data_path {$DATA_PATH} --subreddit {$SUBREDDIT_NAME} --year {$YEAR} 
 ```
 ##### The extracted data is stored in the origin folder.
 
