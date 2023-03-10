@@ -7,11 +7,13 @@ def main(args):
     default_path = os.getcwd()
     data_path = os.path.join(default_path, args.data_path)
     save_path = os.path.join(args.data_path, 'processed')
+
     reddit = RedditData(args.subreddit, data_path)
+    reddit_p = RedditProcessor(args.data_path, save_path)
+
+    # load data 
     rs_df = reddit.load_df(os.path.join(data_path, 'origin', args.year + '_rs.csv'))
     rc_df = reddit.load_df(os.path.join(data_path, 'origin', args.year + '_rc.csv'))
-    reddit_p = RedditProcessor(args.data_path, save_path)
-    save_dir = os.path.join(default_path, 'data', 'processed') 
     
     # rs: id, subreddit, title, selftext
     rs_col = ['id', 'subreddit', 'title', 'selftext']
@@ -21,7 +23,7 @@ def main(args):
     rc_col = ['link_id', 'subreddit', 'body']
     rc_df = rc_df[rc_col]
 
-    rs_title = rs_df.copy()
+    rs_title = rs_df.copy()   
     rs_title = rs_title[['id', 'subreddit', 'title']]
     rs_title.columns = ['id', 'subreddit', 'text']
     rs_title['type'] = 'title'
@@ -37,18 +39,19 @@ def main(args):
     rc_body['type'] = 'comment'
 
     reddit_df = pd.concat([rs_title, rs_selftext, rc_body]) 
+    reddit_df.reset_index(inplace=True, drop=True) 
 
     ''' data pre-process ''' 
     print(f'data length before pre-process.. {len(reddit_df)}')
 
     reddit_df = reddit_p.drop_na(reddit_df)   # drop na 
     reddit_df = reddit_p.drop_odd('text', reddit_df)   # drop cross post, deleted data 
-    reddit_df.text = reddit_df.text.apply(reddit_p.cleanse_text)
-    reddit_df = reddit_p.drop_duplicates('text', reddit_df)
-    reddit_df = reddit_p.map_rc_rs(reddit_df)
+    reddit_df.text = reddit_df.text.apply(reddit_p.cleanse_text)   # cleanse text 
+    reddit_df = reddit_p.drop_duplicates('text', reddit_df)   # drop duplicates 
+    reddit_df = reddit_p.map_rc_rs(reddit_df)    # delete comment that does not have parent post 
     
     print(f'data length after pre-process.. {len(reddit_df)}')
-    reddit.save_df(reddit_df, os.path.join(save_dir, 'dataset1_' + args.year + '.csv'))
+    reddit.save_df(reddit_df, os.path.join(save_path, 'dataset1_' + args.year + '.csv'))
 
 if __name__ == '__main__':
     cli_parser = argparse.ArgumentParser()
