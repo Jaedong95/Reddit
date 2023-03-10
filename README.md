@@ -68,4 +68,10 @@ $ python create_dataset1.py --data_path {$DATA_PATH} --subreddit {$SUBREDDIT_NAM
 $ python create_dataset2.py --data_path {$DATA_PATH} --subreddit {$SUBREDDIT_NAME} --year {$YEAR} 
 ```
 
+###### we delete personal info (name) from datset2.csv to create dataset3.csv as follows 
+
+```bash
+$ python de-identification.py --data_path {$DATA_PATH} --subreddit {$SUBREDDIT_NAME} --year {$YEAR}
+```
+
 ##### Processed data is stored in the processed folder. (dataset1: document, dataset2: single sentence)
