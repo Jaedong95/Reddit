@@ -16,9 +16,9 @@ def main(args):
     reddit_df = reddit_p.drop_na(reddit_df)   # 결측값 제거 
 
     # convert dataframe 
-    reddit_post = reddit_p.convert_df(reddit_df, 'post')
-    reddit_title = reddit_p.convert_df(reddit_df, 'title')
-    reddit_comment = reddit_p.convert_df(reddit_df, 'comment')
+    reddit_post = reddit_p.convert_df(args.subreddit, reddit_df, 'post')
+    reddit_title = reddit_p.convert_df(args.subreddit, reddit_df, 'title')
+    reddit_comment = reddit_p.convert_df(args.subreddit, reddit_df, 'comment')
     reddit_df2 = pd.concat([reddit_post, reddit_title, reddit_comment])
     reddit_df2.reset_index(inplace=True, drop=True) 
     
