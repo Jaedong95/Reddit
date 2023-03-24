@@ -125,7 +125,7 @@ class RedditProcessor():
         '''
         return text.split('.')
     
-    def convert_df(self, reddit_df, reddit_type):
+    def convert_df(self, subreddit, reddit_df, reddit_type):
         '''
         reddit_df.text: list of text 
         new_df.text: single text  
@@ -140,7 +140,7 @@ class RedditProcessor():
                 if text == '':
                     continue 
                 text = text.strip()
-                new_df.append([reddit_t.id[idx], 'depression', text, reddit_type])
+                new_df.append([reddit_t.id[idx], subreddit, text, reddit_type])
         new_df = pd.DataFrame(new_df, columns = ['id', 'subreddit', 'text', 'type'])
         new_df.reset_index(inplace=True, drop=True) 
         return new_df 
