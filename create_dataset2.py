@@ -1,4 +1,5 @@
 import pandas as pd
+import re 
 import os 
 import argparse 
 from src import RedditData, RedditProcessor
@@ -10,28 +11,35 @@ def main(args):
     
     # load class 
     reddit = RedditData(args.subreddit, data_path)
-    reddit_p = RedditProcessor(args.data_path, save_path)
+    reddit_p = RedditProcessor(args.data_path)
 
-    reddit_df = reddit.load_df(os.path.join(save_path, 'dataset1_' + args.year + '.csv'))
+    # reddit_df = reddit.load_df(os.path.join(save_path, 'dataset1_' + args.year + '.csv'))
+    reddit_df = reddit.load_df(os.path.join(save_path, 'document_' + args.year + '.csv'))
     reddit_df = reddit_p.drop_na(reddit_df)   # 결측값 제거 
+    # print(reddit_df.head(3))
 
     # convert dataframe 
-    reddit_post = reddit_p.convert_df(args.subreddit, reddit_df, 'post')
-    reddit_title = reddit_p.convert_df(args.subreddit, reddit_df, 'title')
-    reddit_comment = reddit_p.convert_df(args.subreddit, reddit_df, 'comment')
+    reddit_post = reddit_p.convert_df(reddit_df, 'post', args.subreddit, columns=reddit_df.columns)
+    reddit_title = reddit_p.convert_df(reddit_df, 'title', args.subreddit, columns=reddit_df.columns)
+    reddit_comment = reddit_p.convert_df(reddit_df, 'comment', args.subreddit, columns=reddit_df.columns)
     reddit_df2 = pd.concat([reddit_post, reddit_title, reddit_comment])
     reddit_df2.reset_index(inplace=True, drop=True) 
     
     ''' data pre-process2  - to create dataset2.csv ''' 
     print(f'data length before pre-process.. {len(reddit_df2)}')
 
-    reddit_df2.text = reddit_df2.text.apply(reddit_p.cleanse_text)   # 텍스트 정제 
+    reddit_df2.text = reddit_df2.text.apply(reddit_p.cleanse_text)   # 텍스트 정제
     reddit_df2 = reddit_p.drop_na(reddit_df2)   # 결측값 제거 
+    # print(reddit_df2.isna().sum())
+    
+    reddit_df2.text = reddit_df2.text.apply(lambda x: re.sub('r/[a-zA-Z]{1,}', 'subreddit', x))   # 'r/depression'과 같은 subreddit 이름을 'subreddit'으로 치환
+    reddit_df2.text = reddit_df2.text.apply(lambda x: re.sub('r/[a-zA-Z]{1,}', 'subreddit', x))   # '/r/depression'과 같은 subreddit 이름을 'subreddit'으로 치환  
     reddit_df2 = reddit_p.drop_duplicates('text', reddit_df2)    # 중복값 제거 
-    reddit_df2 = reddit_p.set_max_tok(reddit_df2, 32)   # 최대 토큰 설정 
+    # reddit_df2 = reddit_p.set_max_tok(reddit_df2, 32)   # 최대 토큰 설정 
 
     print(f'data length after pre-process.. {len(reddit_df2)}')
-    reddit.save_df(reddit_df2, os.path.join(save_path, 'dataset2_' + args.year + '.csv'))
+    # reddit.save_df(reddit_df2, os.path.join(save_path, 'dataset2_' + args.year + '.csv'))
+    reddit.save_df(reddit_df2, os.path.join(save_path, 'document2_' + args.year + '.csv'))
 
 if __name__ == '__main__':
     cli_parser = argparse.ArgumentParser()
