@@ -3,7 +3,7 @@ import os
 import argparse
 from transformers import AutoTokenizer, AutoModelForTokenClassification
 from transformers import pipeline
-from src import RedditData, RedditProcessor
+from src import RedditData
 
 
 def main(args):
@@ -12,7 +12,8 @@ def main(args):
     save_path = os.path.join(args.data_path, 'processed')
     reddit = RedditData(args.subreddit, data_path)
 
-    reddit_df = reddit.load_df(os.path.join(save_path, 'dataset2_' + args.year + '.csv'))
+    # reddit_df = reddit.load_df(os.path.join(save_path, 'dataset2_' + args.year + '.csv'))
+    reddit_df = reddit.load_df(os.path.join(save_path, 'aud_dsm.csv'))
 
     tokenizer = AutoTokenizer.from_pretrained("dslim/bert-base-NER")
     model = AutoModelForTokenClassification.from_pretrained("dslim/bert-base-NER")
@@ -34,12 +35,12 @@ def main(args):
     reddit_df.drop(idx_list, inplace=True)
     reddit_df.reset_index(drop=True, inplace=True)
     print(f'length of data after removing personal info: {len(reddit_df)}')
-    reddit.save_df(reddit_df, os.path.join(save_path, 'dataset3_' + args.year + 'csv'))
+    # reddit.save_df(reddit_df, os.path.join(save_path, 'dataset3_' + args.year + '.csv'))
+    reddit.save_df(reddit_df, os.path.join(save_path, 'aud_dsm_fin.csv'), index=False)
 
 if __name__ == '__main__':
     cli_parser = argparse.ArgumentParser()
     cli_parser.add_argument("--data_path", type=str, default='data', help='path that have train, val data')
-    cli_parser.add_argument("--year", type=str, help='ex: 2010')
     cli_parser.add_argument("--subreddit", type=str, help='subreddit name')
     
     cli_argse = cli_parser.parse_args()
