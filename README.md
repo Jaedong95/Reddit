@@ -54,6 +54,7 @@ nltk   - pip install nltk
 $ python data_extract.py --data_path {$DATA_PATH} --subreddit {$SUBREDDIT_NAME} --year {$YEAR} 
 ```
 ##### The extracted data is stored in the origin folder.
+***
 
 ##### 2) Process data 
 ###### we pre-process reddit data to create dataset1.csv as follows
@@ -76,7 +77,7 @@ $ python de-identification.py --data_path {$DATA_PATH} --subreddit {$SUBREDDIT_N
 
 ##### Processed data is stored in the processed folder. (dataset1: document, dataset2: single sentence)
 
-
+***
 #### 3) Concat data 
 ###### we concat dataset1 to one file 
 ``` bash 
