@@ -75,3 +75,20 @@ $ python de-identification.py --data_path {$DATA_PATH} --subreddit {$SUBREDDIT_N
 ```
 
 ##### Processed data is stored in the processed folder. (dataset1: document, dataset2: single sentence)
+
+
+#### 3) Concat data 
+###### we concat dataset1 to one file 
+``` bash 
+$ python concat_doc.py --data_path {$DATA_PATH}
+``` 
+
+###### we concat dataset2 to one file 
+``` bash 
+$ python concat_data.py --data_path {$DATA_PATH}
+``` 
+
+###### we concat dialog to one file 
+``` bash 
+$ python concat_dialog.py --data_path {$DATA_PATH} --subreddit {$SUBREDDIT_NAME} --dtype {$DIALOG_TYPE}
+```
