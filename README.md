@@ -31,6 +31,18 @@ nltk   - pip install nltk
 |   |   |--- dataset2.csv 
 |   |   |--- dataset3.csv
 ```
+
+```bash 
+|---venv 
+|   |---src
+|   |   |--- RS_2010-01.zst 
+|   |   |--- ... 
+|   |---bert
+|   |   |--- train_encoder.py
+|   |   |--- test_encoder.py
+|   |   |--- ...  
+```
+
 ***
 ### 1. Data Explanation  
 ##### 1) rs*.csv, rc*.csv (folder: origin) 
