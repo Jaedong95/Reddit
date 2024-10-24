@@ -32,27 +32,6 @@ nltk   - pip install nltk
 |   |   |--- dataset3.csv
 ```
 
-```bash 
-|---venv 
-|   |---src
-|   |   |--- encoder.py
-|   |   |--- llm.py
-|   trian_encoder.py 
-|   test_encoder.py
-|   ...  
-```
-
-```bash 
-|---venv 
-|   |---src
-|   |   |---encoder.py
-|   |   |---llm.py
-|   |---bert
-|   |   |---train_encoder.py
-|   |   |---test_encoder.py
-|   ...  
-```
-
 ***
 ### 1. Data Explanation  
 ##### 1) rs*.csv, rc*.csv (folder: origin) 
