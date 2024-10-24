@@ -35,8 +35,21 @@ nltk   - pip install nltk
 ```bash 
 |---venv 
 |   |---src
-|   train_encoder.py
+|   |   |--- encoder.py
+|   |   |--- llm.py
+|   trian_encoder.py 
 |   test_encoder.py
+|   ...  
+```
+
+```bash 
+|---venv 
+|   |---src
+|   |   |---encoder.py
+|   |   |---llm.py
+|   |---bert
+|   |   |---train_encoder.py
+|   |   |---test_encoder.py
 |   ...  
 ```
 
