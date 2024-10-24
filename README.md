@@ -35,12 +35,9 @@ nltk   - pip install nltk
 ```bash 
 |---venv 
 |   |---src
-|   |   |--- RS_2010-01.zst 
-|   |   |--- ... 
-|   |---bert
-|   |   |--- train_encoder.py
-|   |   |--- test_encoder.py
-|   |   |--- ...  
+|   train_encoder.py
+|   test_encoder.py
+|   ...  
 ```
 
 ***
